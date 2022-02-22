@@ -8,9 +8,9 @@
 
 
 # To reset the DB before launching the seed (avoid duplicates)
-User.destroy_all
-Pokemon.destroy_all
 Rental.destroy_all
+Pokemon.destroy_all
+User.destroy_all
 
 raph = User.new({name: "raph", email: "raph@gmail.com", password: "PASSWORD", password_confirmation: "PASSWORD"})
 julien = User.new({name: "julien", email: "julien@gmail.com", password: "PASSWORD", password_confirmation: "PASSWORD"})
