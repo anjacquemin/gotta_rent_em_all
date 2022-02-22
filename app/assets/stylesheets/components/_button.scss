@@ -1,0 +1,18 @@
+.btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  font-weight: bold;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/361/361998.png');
+  background-position:center;
+  background-repeat:repeat;
+  transition: background 0.3s ease;
+  border: 5px solid #0F60C4;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
