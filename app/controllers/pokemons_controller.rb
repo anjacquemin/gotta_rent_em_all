@@ -14,13 +14,13 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(params_validation)
-    # @pokemon.user = ??
+    @pokemon.user = current_user
   end
 
   private
 
   def params_validation
-    params.require(:pokemon).permit(:name, :special_capacity, :category, :description)
+    params.require(:pokemon).permit(:name, :special_capacity, :category, :description, :photo)
   end
 
 end
