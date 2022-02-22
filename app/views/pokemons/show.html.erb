@@ -1,25 +1,33 @@
 <h1>Pokemon details </h1>
 
-<p>Name : <%= @pokemon.name %></p>
-<p>Rating : <%= @pokemon.rating %></p>
-<p>Special special_capacity: <%= @pokemon.special_capacity %></p>
-<p>category : <%= @pokemon.category %></p>
-<p>Description : <%= @pokemon.description %></p>
-<p>User : <%= @pokemon.user.name %></p>
-<% if @pokemon.photo.attached? %>
-  <%= cl_image_tag @pokemon.photo.key, height: 300, width: 400, crop: :fill %>
-<% else%>
-  <%= "METTRE UNE IMAGE" %>
-<% end%>
+<div class="d-flex mt-5" >
+  <div class="card-product d-flex">
+    <div class="m-3 p-3">
+      <% if @pokemon.photo.attached? %>
+      <%= cl_image_tag @pokemon.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else%>
+      <%= "METTRE UNE IMAGE" %>
+      <% end%>
+    </div>
+    <div class="card-product-infos m-5">
+      <p class="text-center"><%= @pokemon.name %></p>
+      <%# <p>Rating : = @pokemon.rating</p> %>
+      <p>Special capacity: <%= @pokemon.special_capacity %></p>
+      <p>Category : <%= @pokemon.category %></p>
+      <p>Description : <%= @pokemon.description %></p>
+      <p>User : <%= @pokemon.user.name %></p>
+    </div>
+  </div>
+  <div>
+    <%= simple_form_for([@pokemon, @rental]) do |f| %>
+      <%= f.input :rental_beginning %>
+      <%= f.input :rental_end %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
 
-<%# <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
-
-<%= simple_form_for([@pokemon, @rental]) do |f| %>
-  <%= f.input :rental_beginning %>
-  <%= f.input :rental_end %>
-  <%= f.submit %>
+<% if policy(@pokemon).edit? %>
+  <%= link_to "Edit pokemon", edit_pokemon_path(@pokemon) %>
+  <%= link_to "Delete pokemon", pokemon_path(@pokemon), method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
 <% end %>
-
-
-<%= link_to "Edit pokemon", edit_pokemon_path(@pokemon) %>
-<%= link_to "Delete pokemon", pokemon_path(@pokemon), method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
