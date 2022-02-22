@@ -14,7 +14,7 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(params_validation)
-    # @pokemon.user = ??
+    @pokemon.user = current_user
   end
 
   private
