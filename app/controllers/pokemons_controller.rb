@@ -20,7 +20,7 @@ class PokemonsController < ApplicationController
   private
 
   def params_validation
-    params.require(:pokemon).permit(:name, :special_capacity, :category, :description)
+    params.require(:pokemon).permit(:name, :special_capacity, :category, :description, :photo)
   end
 
 end
