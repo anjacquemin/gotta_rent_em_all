@@ -22,7 +22,7 @@ julien.save!
 nico.save!
 antho.save!
 
-carapace = Pokemon.new({name: "Psykokwak", special_capacity: "hydrocanon", category: "water", description: "In love with some teachers "})
+carapace = Pokemon.new({name: "Psykokwak", special_capacity: "hydrocanon", category: "water", description: "In love with himself "})
 carapace.user = raph
 carapace.save!
 
