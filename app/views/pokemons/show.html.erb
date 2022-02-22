@@ -6,4 +6,8 @@
 <p>category : <%= @pokemon.category %></p>
 <p>Description : <%= @pokemon.description %></p>
 <p>User : <%= @pokemon.user.name %></p>
-<%# <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+<% if @pokemon.photo.attached? %>
+  <%= cl_image_tag @pokemon.photo.key, height: 300, width: 400, crop: :fill %>
+<% else%>
+  <%= "METTRE UNE IMAGE" %>
+<% end%>
