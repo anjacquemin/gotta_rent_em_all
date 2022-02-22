@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+html {
+  cursor: asset-url('lightning'), auto;
+}
+
+a:hover {
+  cursor: asset-url('lightning'), auto;
+}
