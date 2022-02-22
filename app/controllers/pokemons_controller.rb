@@ -17,6 +17,11 @@ class PokemonsController < ApplicationController
   def create
     @pokemon = Pokemon.new(params_validation)
     @pokemon.user = current_user
+    if @pokemon.save
+      redirect_to pokemon_path(@pokemon)
+    else
+      render :new
+    end
     authorize @pokemon
   end
 

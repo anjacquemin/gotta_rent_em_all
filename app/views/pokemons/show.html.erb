@@ -6,7 +6,14 @@
 <p>category : <%= @pokemon.category %></p>
 <p>Description : <%= @pokemon.description %></p>
 <p>User : <%= @pokemon.user.name %></p>
+<% if @pokemon.photo.attached? %>
+  <%= cl_image_tag @pokemon.photo.key, height: 300, width: 400, crop: :fill %>
+<% else%>
+  <%= "METTRE UNE IMAGE" %>
+<% end%>
+
 <%# <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
 
 <%= link_to "Edit pokemon", edit_pokemon_path(@pokemon) %>
 <%= link_to "Delete pokemon", pokemon_path(@pokemon), method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+
