@@ -1,6 +1,9 @@
-<div class="body">
-  <div class="container">
-    <img src='https://www.quizexpo.com/wp-content/uploads/2020/02/f74b7a99-02fb-4109-9c35-303c5b3d69bf.jpg-resize-_opacity_100-frame_bg_color_FFF-gravity_center-q_70-preserve_ratio_true-w_2048_.jpg' alt='pokemon'>
-      <%= link_to "ENTER", pokemons_path, class: "btn btn-gradient" %>
+<div class="banner" style="background-image: linear-gradient(transparent, #000), url(https://www.quizexpo.com/wp-content/uploads/2020/02/f74b7a99-02fb-4109-9c35-303c5b3d69bf.jpg-resize-_opacity_100-frame_bg_color_FFF-gravity_center-q_70-preserve_ratio_true-w_2048_.jpg);">
+  <div class="center-on-page">
+    <%= link_to pokemons_path do %>
+      <div class="pokeball">
+      <div class="pokeball__button"></div>
+      </div>
+    <% end %>
   </div>
 </div>

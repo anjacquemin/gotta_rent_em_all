@@ -6,6 +6,7 @@ class PokemonsController < ApplicationController
 
   def show
     @pokemon = Pokemon.find(params[:id])
+    @rental = Rental.new
     authorize @pokemon
   end
 
