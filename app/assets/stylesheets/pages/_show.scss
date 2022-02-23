@@ -1,12 +1,17 @@
 
 .poke_img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
+
 }
-.row {
-  height: 500px;
-}
+
+
 .banner_show {
   height: 100px;
   display: flex;
   text-align: center;
+  font-size: 36px;
+  justify-content: center;
+  align-items: center;
 }
