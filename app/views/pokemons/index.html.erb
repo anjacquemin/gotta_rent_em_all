@@ -2,21 +2,23 @@
 <div class="row mt-5 w-100 mx-0">
   <% @pokemons.each do |pokemon| %>
     <div class="col-3 mb-3 px-3">
-      <div class="column bg-white h-100" id="card">
-        <% if pokemon.photo.attached? %>
-          <%= cl_image_tag pokemon.photo.key, height: 300, class: "img-card-top" %>
-        <% else%>
-          <%= "METTRE UNE IMAGE" %>
-        <% end%>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" style="center" id="pokename"> <%= link_to pokemon.name, pokemon_path(pokemon) %></li>
-          <li class="list-group-item"> <strong>Description:</strong> <%= pokemon.description %> </li>
-          <li class="list-group-item"> Special: <%= pokemon.special_capacity %> </li>
-          <li class="list-group-item"> Category: <%= pokemon.category %></li>
-          <li class="list-group-item">Rating:</li>
-          <li class="list-group-item">Availability:</li>
-        </ul>
-      </div>
+      <%= link_to pokemon_path(pokemon), id: "card-link" do %>
+        <div class="column bg-white h-100" id="card">
+          <% if pokemon.photo.attached? %>
+            <%= cl_image_tag pokemon.photo.key, height: 300, class: "img-card-top" %>
+          <% else%>
+            <%= "METTRE UNE IMAGE" %>
+          <% end%>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="center" id="pokename"> <%= pokemon.name %></li>
+            <li class="list-group-item"> <strong>Description:</strong> <%= pokemon.description %> </li>
+            <li class="list-group-item"> Special: <%= pokemon.special_capacity %> </li>
+            <li class="list-group-item"> Category: <%= pokemon.category %></li>
+            <li class="list-group-item">Rating:</li>
+            <li class="list-group-item">Availability:</li>
+          </ul>
+        </div>
+       <% end %>
     </div>
   <% end %>
 </div>
