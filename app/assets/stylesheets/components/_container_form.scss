@@ -1,0 +1,20 @@
+.container-form {
+  width: 600px;
+  margin-top: 60px;
+  opacity: 1;
+  height : 800px;
+}
+
+#form_new {
+  opacity: 1;
+}
+
+.background_image_new {
+  background-image: url("https://www.nintendo-town.fr/wp-content/uploads/2016/02/Un-nouveau-Splatfest-annonc%C3%A9-Pok%C3%A9mon-Version-Rouge-ou-Version-Bleue.jpg");
+  // width: 100%;
+  background-size: cover;
+  height: 100%;
+  // object-fit: cover;
+  opacity: 0.4;
+  padding: 50px;
+}
