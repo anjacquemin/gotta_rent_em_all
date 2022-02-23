@@ -1,5 +1,4 @@
-<div class="index_banner">
-</div>
+<%= image_tag "pokemon_banner.png", style: 'background-size: cover; width: 100%; height: 100%; margin-top: 66px;' %>
 
 <% @pokemons.each do |pokemon| %>
 <p>  <%= link_to pokemon.name, pokemon_path(pokemon) %> </p>
@@ -8,3 +7,19 @@
 <% if policy(Pokemon).create? %>
   <%= link_to "New pokemon", new_pokemon_path %>
 <% end %>
+<div class="row">
+  <% @pokemons.each do |pokemon| %>
+    <div class="column col-3 mb-3" id="card">
+      <h3 class="title"><%= pokemon.name %></h3>
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.BFE91LRmvFFeL14iulqROQHaJD%26pid%3DApi&f=1" class="card-img-top" alt="...">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <%= link_to pokemon.name, pokemon_path(pokemon) %></li>
+        <li class="list-group-item">  <%= pokemon.description %> </li>
+        <li class="list-group-item">  <%= pokemon.special_capacity %> </li>
+        <li class="list-group-item"> <%= pokemon.category %></li>
+        <li class="list-group-item">Rating</li>
+        <li class="list-group-item">Availability:</li>
+      </ul>
+    </div>
+  <% end %>
+</div>
