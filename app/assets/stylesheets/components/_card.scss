@@ -10,6 +10,15 @@
 
 #card-link {
   text-decoration: none;
+
+  img {
+    transition: all 0.3s ease-in;
+  }
+
+  &:hover img {
+    width: 110%;
+    transform: rotate(30deg);
+  }
 }
 
 #card {
