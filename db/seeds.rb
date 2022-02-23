@@ -1,4 +1,5 @@
 require "open-uri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,9 +7,8 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
 # To reset the DB before launching the seed (avoid duplicates)
+
 Rental.destroy_all
 Pokemon.destroy_all
 User.destroy_all
@@ -45,6 +45,7 @@ chenipan.photo.attach(io: file, filename: chenipan.name)
 mew = Pokemon.new({name: "Mew", special_capacity: "Can destroy everything", category: "Psy", description: "Hard to find..."})
 mew.user = antho
 mew.save!
+
 file = URI.open("https://eternia.fr/public/media//upload/news/99ff11febe6323a17ea35b0b5bd4c6afba319976.png")
 mew.photo.attach(io: file, filename: mew.name)
 
@@ -95,6 +96,7 @@ bulbizarre.user = antho
 bulbizarre.save!
 file = URI.open("https://www.123-stickers.com/7276-7670-thickbox/Array.jpg")
 bulbizarre.photo.attach(io: file, filename: bulbizarre.name)
+
 
 rental = Rental.new(rental_beginning: "2022-01-01 00-00-00", rental_end: "2022-03-01 00-00-00")
 rental.user = nico

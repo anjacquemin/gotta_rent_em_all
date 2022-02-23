@@ -1,31 +1,55 @@
 <h1>Pokemon details </h1>
-
-<div class="d-flex mt-5" >
-  <div class="card-product d-flex">
-    <div class="m-3 p-3">
-      <% if @pokemon.photo.attached? %>
-      <%= cl_image_tag @pokemon.photo.key, height: 300, width: 400, crop: :fill %>
-      <% else%>
-      <%= "METTRE UNE IMAGE" %>
-      <% end%>
+<div class="container">
+  <div class="banner_show">
+    <%= @pokemon.name %>
+  </div>
+  <div class="row mb-10" style="background-color: grey" >
+    <div class="col-sm-8">
+      <div class="d-flex mt-5 h-100 w-50" >
+        <div class="card-poke">
+          <div class="m-3 p-3">
+            <img class ="poke_img" src="https://www.pokepedia.fr/images/thumb/4/44/Psykokwak-RFVF.png/250px-Psykokwak-RFVF.png">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="card-product-infos m-5">
-      <p class="text-center"><%= @pokemon.name %></p>
-      <%# <p>Rating : = @pokemon.rating</p> %>
-      <p>Special capacity: <%= @pokemon.special_capacity %></p>
-      <p>Category : <%= @pokemon.category %></p>
-      <p>Description : <%= @pokemon.description %></p>
-      <p>User : <%= @pokemon.user.name %></p>
+
+    <div class="col-sm-4">
+      <div class="d-flex mt-5 h-100 w-50" >
+          <div class="card-poke">
+            <div class="m-3 p-3">
+              <img class ="poke_img" src="https://www.pokepedia.fr/images/thumb/6/6e/Akwakwak-RFVF.png/610px-Akwakwak-RFVF.png"></div>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
-  <div>
-    <%= simple_form_for([@pokemon, @rental]) do |f| %>
-      <%= f.input :rental_beginning %>
-      <%= f.input :rental_end %>
-      <%= f.submit %>
-    <% end %>
+
+  <div class="row mt-10" style= "background-color: grey">
+    <div class="col-sm">
+      <div class="card-product-infos m-5">
+        <p class="text-center"><%= @pokemon.name %></p>
+        <%# <p>Rating : = @pokemon.rating</p> %>
+        <p>Special capacity: <%= @pokemon.special_capacity %></p>
+        <p>Category : <%= @pokemon.category %></p>
+        <p>Description : <%= @pokemon.description %></p>
+        <p>User : <%= @pokemon.user.name %></p>
+      </div>
+    </div>
+
+    <div class="col-sm mt-10">
+      <div>
+        <%= simple_form_for([@pokemon, @rental]) do |f| %>
+          <%= f.input :rental_beginning %>
+          <%= f.input :rental_end %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+
 
 <% if policy(@pokemon).edit? %>
   <%= link_to "Edit pokemon", edit_pokemon_path(@pokemon) %>
