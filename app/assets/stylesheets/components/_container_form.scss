@@ -10,11 +10,15 @@
 }
 
 .background_image_new {
-  background-image: url("https://www.nintendo-town.fr/wp-content/uploads/2016/02/Un-nouveau-Splatfest-annonc%C3%A9-Pok%C3%A9mon-Version-Rouge-ou-Version-Bleue.jpg");
+  background-image: url("https://c0.lestechnophiles.com/www.numerama.com/wp-content/uploads/2015/11/pokemon-list.jpg?resize=1024,576");
   // width: 100%;
   background-size: cover;
   height: 100%;
   // object-fit: cover;
-  opacity: 0.4;
+  opacity: 1;
   padding: 50px;
+  font-weight: bold;
+  font-size: large;
+  font-family: 'Press Start 2P', cursive;
+  // background: linear-gradient(#FFFFFF, #000000);
 }
