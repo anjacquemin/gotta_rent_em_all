@@ -1,18 +1,35 @@
 class PokemonsController < ApplicationController
 
   def index
-    @pokemons = policy_scope(Pokemon)
     if params[:query].present?
-      @pokemons = Pokemon.search_by_name_and_special_capacity_category(params[:query])
+      @pokemons = policy_scope(Pokemon).search_by_name_and_special_capacity_category(params[:query])
     else
-      @pokemons = Pokemon.all
+      @pokemons = policy_scope(Pokemon)
     end
+
+    @markers = @pokemons.geocoded.map do |pokemon|
+      {
+        lat: pokemon.latitude,
+        lng: pokemon.longitude,
+        image_url: helpers.asset_url("pokeball_marker.png")
+      }
+    end
+
   end
 
   def show
     @pokemon = Pokemon.find(params[:id])
     @rental = Rental.new
     authorize @pokemon
+    if @pokemon.geocoded?
+      @markers = [
+        {
+          lat: @pokemon.latitude,
+          lng: @pokemon.longitude,
+          image_url: helpers.asset_url("pokeball_marker.png")
+        }
+      ]
+    end
   end
 
   def new
@@ -53,6 +70,6 @@ class PokemonsController < ApplicationController
   private
 
   def params_validation
-    params.require(:pokemon).permit(:name, :special_capacity, :category, :description, :photo)
+    params.require(:pokemon).permit(:name, :special_capacity, :category, :description, :photo, :address)
   end
 end
