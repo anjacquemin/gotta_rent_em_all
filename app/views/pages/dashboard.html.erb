@@ -1,5 +1,5 @@
 
-<%= image_tag "pokemon_banner.png", style: 'background-size: cover; width: 100%; height: 100%; margin-top: 66px;' %>
+<%= image_tag "pokemon_banner.png", style: 'background-size: cover; width: 100%; height: 100%' %>
 
 <div class="container dashboard-title mt-3">
   <%= "#{@user.name.upcase}'S DASHBOARD !" %>
@@ -7,62 +7,131 @@
 
 <br>
 
-<div class="container dashboard-part mt-5">
-  <%= "MY POKEMONS !" %>
-</div>
+<div>
+  <div class="container dashboard-part mt-5">
+    <%= "MY POKEMONS !" %>
+  </div>
 
-<div class="dashboard-block">
-  <div class="container">
-    <div class="row mt-4 w-100 mx-0">
-      <% @pokemons.each do |pokemon| %>
-        <div class="col-3 mb-3 px-3">
-          <%= link_to pokemon_path(pokemon), id: "card-link" do %>
-            <div class="column bg-white h-100" id="card">
-              <% if pokemon.photo.attached? %>
-                <%= cl_image_tag pokemon.photo.key, height: 300, class: "img-card-top" %>
-              <% else%>
-                <%= "METTRE UNE IMAGE" %>
-              <% end%>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="center" id="pokename"> <%= pokemon.name %></li>
-                <li class="list-group-item">Rating:</li>
-                <li class="list-group-item">Last bookings:</li>
-                <% pokemon.rentals.last(3).each do |rental| %>
-                <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="dashboard-block">
+    <div class="container">
+      <div class="row mt-4 w-100 mx-0">
+        <% @pokemons.each do |pokemon| %>
+          <div class="col-3 mb-3 px-3">
+            <%= link_to pokemon_path(pokemon), id: "card-link" do %>
+              <div class="column bg-white h-100" id="card">
+                <% if pokemon.photo.attached? %>
+                  <%= cl_image_tag pokemon.photo.key, height: 300, class: "img-card-top" %>
+                <% else%>
+                  <%= "METTRE UNE IMAGE" %>
+                <% end%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="center" id="pokename"> <%= pokemon.name %></li>
+                  <li class="list-group-item">Rating:</li>
+                  <li class="list-group-item">Last bookings:</li>
+                  <% pokemon.rentals.last(3).each do |rental| %>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} by #{rental.user.name}" %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
+<div data-controller="dashboard">
+  <div class="tab container mt-5">
+    <button class="tablinks" data-action="click->dashboard#openTab" data-tab="current-bookings">My current bookings</button>
+    <button class="tablinks" data-action="click->dashboard#openTab" data-tab="future-bookings">My future bookings</button>
+    <button class="tablinks" data-action="click->dashboard#openTab" data-tab="past-bookings">My past_bookings</button>
+  </div>
 
-<div class="container dashboard-part mt-5">
-  <%= "MY LAST BOOKINGS !" %>
-</div>
 
-
-<div class="container">
-  <div class="row mt-4 w-100 mx-0">
-    <% @rentals.last(8).each do |rental| %>
-      <div class="col-3 mb-3 px-3">
-        <%= link_to pokemon_path(rental.pokemon), id: "card-link" do %>
-          <div class="column bg-white h-100" id="card">
-            <% if rental.pokemon.photo.attached? %>
-              <%= cl_image_tag rental.pokemon.photo.key, height: 300, class: "img-card-top" %>
-            <% else%>
-              <%= "METTRE UNE IMAGE" %>
-            <% end%>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
-              <li class="list-group-item">Booking:</li>
-              <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+  <div id="current-bookings" class="tabcontent">
+    <div class="container dashboard-part mt-5">
+      <%= "MY CURRENT BOOKINGS !" %>
+    </div>
+    <div class="container">
+      <div class="row mt-4 w-100 mx-0">
+        <% current_rentals = @rentals.select { |rental| (rental.rental_end >= Date.today) && (rental.rental_beginning <= Date.today) } %>
+        <% current_rentals.each do |rental| %>
+          <div class="col-2 mb-3 px-3">
+            <%= link_to pokemon_path(rental.pokemon), id: "card-link" do %>
+              <div class="column bg-white h-100" id="card">
+                <% if rental.pokemon.photo.attached? %>
+                  <%= cl_image_tag rental.pokemon.photo.key, height: 300, class: "img-card-top" %>
+                <% else%>
+                  <%= "METTRE UNE IMAGE" %>
+                <% end%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
+                  <li class="list-group-item">Booking:</li>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
+  </div>
+
+
+  <div id="future-bookings" class="tabcontent">
+    <div class="container dashboard-part mt-5">
+      <%= "MY FUTURE BOOKINGS !" %>
+    </div>
+    <div class="container">
+      <div class="row mt-4 w-100 mx-0">
+        <% current_rentals = @rentals.select { |rental| rental.rental_beginning > Date.today } %>
+        <% current_rentals.each do |rental| %>
+          <div class="col-2 mb-3 px-3">
+            <%= link_to pokemon_path(rental.pokemon), id: "card-link" do %>
+              <div class="column bg-white h-100" id="card">
+                <% if rental.pokemon.photo.attached? %>
+                  <%= cl_image_tag rental.pokemon.photo.key, height: 300, class: "img-card-top" %>
+                <% else%>
+                  <%= "METTRE UNE IMAGE" %>
+                <% end%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
+                  <li class="list-group-item">Booking:</li>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="past-bookings" class="tabcontent">
+    <div class="container dashboard-part mt-5">
+      <%= "MY OLD BOOKINGS !" %>
+    </div>
+    <div class="container">
+      <div class="row mt-4 w-100 mx-0">
+        <% current_rentals = @rentals.select { |rental| rental.rental_end < Date.today } %>
+        <% current_rentals.each do |rental| %>
+          <div class="col-2 mb-3 px-3">
+            <%= link_to pokemon_path(rental.pokemon), id: "card-link" do %>
+              <div class="column bg-white h-100" id="card">
+                <% if rental.pokemon.photo.attached? %>
+                  <%= cl_image_tag rental.pokemon.photo.key, height: 300, class: "img-card-top" %>
+                <% else%>
+                  <%= "METTRE UNE IMAGE" %>
+                <% end%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
+                  <li class="list-group-item">Booking:</li>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
