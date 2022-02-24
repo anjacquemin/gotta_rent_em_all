@@ -3,9 +3,13 @@
 
 <div class="container dashboard-title mt-3">
   <p><%= "#{@user.name.upcase}'S DASHBOARD !" %></p>
-  <p class="text-success" ><%= "Last rental confirmed !" unless @last_rental.nil?  %></p>
+
+  <% unless @last_rental.nil? %>
+  <p class="text-success" ><%= "Last rental confirmed !" %></p>
   <p class="text-success"><%= "from : #{@last_rental.rental_beginning.strftime('%a %d %b %Y')} to: #{@last_rental.rental_end.strftime('%a %d %b %Y')}" %></p>
   <p class="text-success"> <%= "With #{@last_rental.pokemon.name}" %></p>
+  <% end %>
+
 </div>
 
 <br>
@@ -32,7 +36,7 @@
                   <li class="list-group-item">Rating:</li>
                   <li class="list-group-item">Last bookings:</li>
                   <% pokemon.rentals.last(3).each do |rental| %>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} by #{rental.user.name}" %></li>
+                  <li class="list-group-item"><%= "#{rental.rental_beginning.strftime('%a %d %b %Y')} to #{rental.rental_end.strftime('%a %d %b %Y')} by #{rental.user.name}" %></li>
                   <% end %>
                 </ul>
               </div>
@@ -71,7 +75,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
                   <li class="list-group-item">Booking:</li>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} from #{rental.user.name}"  %></li>            </ul>
+                  <li class="list-group-item"><%= "#{rental.rental_beginning.strftime('%a %d %b %Y')} to #{rental.rental_end.strftime('%a %d %b %Y')}" %></li>            </ul>
               </div>
             <% end %>
           </div>
@@ -100,7 +104,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
                   <li class="list-group-item">Booking:</li>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} from #{rental.user.name}" %></li>            </ul>
+                  <li class="list-group-item"><%= "#{rental.rental_beginning.strftime('%a %d %b %Y')} to #{rental.rental_end.strftime('%a %d %b %Y')}" %></li>            </ul>
               </div>
             <% end %>
           </div>
@@ -129,7 +133,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
                   <li class="list-group-item">Booking:</li>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} from #{rental.user.name}" %></li>            </ul>
+                  <li class="list-group-item"><%= "#{rental.rental_beginning.strftime('%a %d %b %Y')} to #{rental.rental_end.strftime('%a %d %b %Y')}" %></li>            </ul>
               </div>
             <% end %>
           </div>
