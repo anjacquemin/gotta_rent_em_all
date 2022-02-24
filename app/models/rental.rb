@@ -3,7 +3,6 @@ class Rental < ApplicationRecord
   belongs_to :user
 end
 
-
 # user validation
 # has_many :pokemons, dependent: :destroy
 

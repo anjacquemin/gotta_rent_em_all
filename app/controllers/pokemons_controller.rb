@@ -1,7 +1,12 @@
 class PokemonsController < ApplicationController
 
   def index
-    @pokemons = policy_scope(Pokemon)
+    if params[:query].present?
+      @pokemons = policy_scope(Pokemon).search_by_name_and_special_capacity_category(params[:query])
+    else
+      @pokemons = policy_scope(Pokemon)
+    end
+
     @markers = @pokemons.geocoded.map do |pokemon|
       {
         lat: pokemon.latitude,
@@ -9,6 +14,7 @@ class PokemonsController < ApplicationController
         image_url: helpers.asset_url("pokeball_marker.png")
       }
     end
+
   end
 
   def show
