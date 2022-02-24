@@ -8,7 +8,7 @@
 <br>
 
 <div>
-  <div class="container dashboard-part mt-5">
+  <div class="container dashboard-part mt-3">
     <%= "MY POKEMONS !" %>
   </div>
 
@@ -68,7 +68,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
                   <li class="list-group-item">Booking:</li>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} from #{rental.user.name}"  %></li>            </ul>
               </div>
             <% end %>
           </div>
@@ -97,7 +97,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
                   <li class="list-group-item">Booking:</li>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} from #{rental.user.name}" %></li>            </ul>
               </div>
             <% end %>
           </div>
@@ -126,7 +126,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style="center" id="pokename"> <%= rental.pokemon.name %></li>
                   <li class="list-group-item">Booking:</li>
-                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')}" %></li>            </ul>
+                  <li class="list-group-item"><%= "#{rental.rental_end.strftime('%a %d %b %Y')} to #{rental.rental_beginning.strftime('%a %d %b %Y')} from #{rental.user.name}" %></li>            </ul>
               </div>
             <% end %>
           </div>
