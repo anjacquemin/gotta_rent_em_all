@@ -1,8 +1,14 @@
-<%= simple_form_for(@pokemon) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :special_capacity %>
-  <%= f.input :category %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="background_image_new">
+  <div class="container container-form">
+    <div id="form_new">
+      <%= simple_form_for(@pokemon) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :special_capacity %>
+        <%= f.input :category %>
+        <%= f.input :description %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

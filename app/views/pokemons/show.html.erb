@@ -34,15 +34,21 @@
       <%= simple_form_for([@pokemon, @rental]) do |f| %>
         <%= f.input :rental_beginning %>
         <%= f.input :rental_end %>
-        <%= f.submit %>
+        <%= f.submit "Rent me !" %>
       <% end %>
     </div>
   </div>
 
-
-
-  <% if policy(@pokemon).edit? %>
-    <%= link_to "Edit pokemon", edit_pokemon_path(@pokemon) %>
-    <%= link_to "Delete pokemon", pokemon_path(@pokemon), method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
-  <% end %>
+  <div class="container d-flex">
+    <div class="d-flex">
+      <% if policy(@pokemon).edit? %>
+      <div>
+        <%= link_to "Edit my pokemon", edit_pokemon_path(@pokemon), class: "button-pokemon" %>
+      </div>
+      <div>
+        <%= link_to "Delete my pokemon", pokemon_path(@pokemon), class: "button-pokemon", method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>

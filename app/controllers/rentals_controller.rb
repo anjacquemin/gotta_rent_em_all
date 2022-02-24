@@ -1,14 +1,21 @@
 class RentalsController < ApplicationController
 
+
+  def show
+    # raise
+    @rental = Rental.find(params[:id])
+    authorize @rental
+  end
+
   def create
     @rental = Rental.new(rental_params)
-    # we need `restaurant_id` to associate review with corresponding restaurant
     @pokemon = Pokemon.find(params[:pokemon_id])
     @rental.pokemon = @pokemon
     @rental.user = current_user
     @rental.save
     authorize @rental
-    redirect_to pokemons_path
+    # raise
+    redirect_to pokemon_rental_path(@pokemon, @rental)
   end
 
 private
