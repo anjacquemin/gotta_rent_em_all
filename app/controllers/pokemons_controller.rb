@@ -20,6 +20,7 @@ class PokemonsController < ApplicationController
   def show
     @pokemon = Pokemon.find(params[:id])
     @rental = Rental.new
+    @unavailable_dates = Rental.unavailable_dates(@pokemon).to_json
     authorize @pokemon
     if @pokemon.geocoded?
       @markers = [
