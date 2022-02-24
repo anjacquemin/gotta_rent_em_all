@@ -32,8 +32,8 @@
 
     <div class="row mx-0 my-5 p-5 card-poke">
       <%= simple_form_for([@pokemon, @rental]) do |f| %>
-        <%= f.input :rental_beginning %>
-        <%= f.input :rental_end %>
+        <%= f.input :rental_beginning, as: :string, required: false, input_html: {id: "range_start"} %>
+        <%= f.input :rental_end, as: :string, required: false, input_html: {id: "range_end"} %>
         <%= f.submit "Rent me !" %>
       <% end %>
     </div>
