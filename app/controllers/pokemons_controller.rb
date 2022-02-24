@@ -5,7 +5,8 @@ class PokemonsController < ApplicationController
     @markers = @pokemons.geocoded.map do |pokemon|
       {
         lat: pokemon.latitude,
-        lng: pokemon.longitude
+        lng: pokemon.longitude,
+        image_url: helpers.asset_url("pokeball_marker.png")
       }
     end
   end
@@ -18,7 +19,8 @@ class PokemonsController < ApplicationController
       @markers = [
         {
           lat: @pokemon.latitude,
-          lng: @pokemon.longitude
+          lng: @pokemon.longitude,
+          image_url: helpers.asset_url("pokeball_marker.png")
         }
       ]
     end
