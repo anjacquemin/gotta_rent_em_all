@@ -8,9 +8,17 @@ export default class extends Controller {
   }
   openTab(event) {
     const target = event.currentTarget.dataset.tab;
-    // this.bookingsTarget.classlist.toggle("active")
+
     const tab = document.querySelector(`#${target}`);
+
+    // this.bookingsTarget.classlist.toggle("active")
+    const tab1 = document.querySelector("#current-bookings");
+    const tab2 = document.querySelector("#future-bookings");
+    const tab3 = document.querySelector("#past-bookings");
     // console.log(tab)
-    tab.classList.add("active")
+    tab1.classList.add("tabcontent")
+    tab2.classList.add("tabcontent")
+    tab3.classList.add("tabcontent")
+    tab.classList.remove("tabcontent")
   }
 }
