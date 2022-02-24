@@ -29,10 +29,10 @@
       </div>
     </div>
 
-    <div class="row mx-0 my-5 p-5 card-poke">
+    <div id = "booking-dates" class="row mx-0 my-5 p-5 card-poke" data-unavailable="<%= @unavailable_dates %>" >
       <%= simple_form_for([@pokemon, @rental]) do |f| %>
-        <%= f.input :rental_beginning, as: :string, required: false, input_html: {id: "range_start"} %>
-        <%= f.input :rental_end, as: :string, required: false, input_html: {id: "range_end"} %>
+        <%= f.input :rental_beginning, as: :string, required: false, input_html: {class: "datepicker", id:"start_date"} %>
+        <%= f.input :rental_end, as: :string, required: false, input_html: {class: "datepicker", id:"end_date"} %>
         <%= f.submit "Rent me !" %>
       <% end %>
     </div>
