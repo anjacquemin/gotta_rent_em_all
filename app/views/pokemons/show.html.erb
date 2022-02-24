@@ -9,11 +9,11 @@
               <%= cl_image_tag @pokemon.photo.key, class: "poke_img mt-3" %>
               <div class="card-product-infos h-50 px-5 pb-0 pt-3 mt-5">
             <%# <p>Rating : = @pokemon.rating</p> %>
-                <p>Evolution : <%= @pokemon.name%></p>
+                <p>Name : <%= @pokemon.name%></p>
                 <p>Special capacity: <%= @pokemon.special_capacity %></p>
                 <p>Category : <%= @pokemon.category %></p>
                 <p>Description : <%= @pokemon.description %></p>
-                <p>User : <%= @pokemon.user.name %></p>
+                <p>Trainer : <%= @pokemon.user.name %></p>
               </div>
             </div>
           </div>

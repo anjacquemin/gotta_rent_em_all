@@ -11,7 +11,8 @@ class PokemonsController < ApplicationController
       {
         lat: pokemon.latitude,
         lng: pokemon.longitude,
-        image_url: helpers.asset_url("pokeball_marker.png")
+        image_url: helpers.asset_url("pokeball_marker.png"),
+        info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon })
       }
     end
 
@@ -27,7 +28,8 @@ class PokemonsController < ApplicationController
         {
           lat: @pokemon.latitude,
           lng: @pokemon.longitude,
-          image_url: helpers.asset_url("pokeball_marker.png")
+          image_url: helpers.asset_url("pokeball_marker.png"),
+          info_window: render_to_string(partial: "info_window", locals: { pokemon: @pokemon })
         }
       ]
     end
