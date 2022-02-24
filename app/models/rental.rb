@@ -2,6 +2,10 @@ class Rental < ApplicationRecord
   belongs_to :pokemon
   belongs_to :user
 
+end
+
+# user validation
+# has_many :pokemons, dependent: :destroy
 
   def self.unavailable_dates(pokemon)
     all_rentals = []

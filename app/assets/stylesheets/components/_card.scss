@@ -1,5 +1,6 @@
 .list-group-item {
   font-family: 'Press Start 2P', cursive;
+  // font-family: 'Pokemon GB';
   font-size: 12px;
 }
 
@@ -43,3 +44,7 @@
 #card:hover {
   box-shadow: 20px 8px 12px rgb(14, 13, 13);
   }
+
+.card {
+  font-family: 'Pokemon GB' !important;
+}
