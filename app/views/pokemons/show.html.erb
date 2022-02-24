@@ -35,7 +35,7 @@
       <%= simple_form_for([@pokemon, @rental]) do |f| %>
         <%= f.input :rental_beginning, as: :string, required: false, input_html: {class: "datepicker", id:"start_date"} %>
         <%= f.input :rental_end, as: :string, required: false, input_html: {class: "datepicker", id:"end_date"} %>
-        <%= f.submit "Rent me !" %>
+        <%= f.submit "Rent me !", data: {confirm: "Are you sure this information is correct?"} %>
       <% end %>
     </div>
   </div>

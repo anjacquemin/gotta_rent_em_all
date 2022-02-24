@@ -14,8 +14,7 @@ class RentalsController < ApplicationController
     @rental.user = current_user
     @rental.save
     authorize @rental
-    # raise
-    redirect_to pokemon_rental_path(@pokemon, @rental)
+    redirect_to dashboard_booking_path(@rental)
   end
 
 private

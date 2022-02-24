@@ -2,7 +2,10 @@
 <%= image_tag "pokemon_banner.png", style: 'background-size: cover; width: 100%; height: 100%' %>
 
 <div class="container dashboard-title mt-3">
-  <%= "#{@user.name.upcase}'S DASHBOARD !" %>
+  <p><%= "#{@user.name.upcase}'S DASHBOARD !" %></p>
+  <p class="text-success" ><%= "Last rental confirmed !" unless @last_rental.nil?  %></p>
+  <p class="text-success"><%= "from : #{@last_rental.rental_beginning.strftime('%a %d %b %Y')} to: #{@last_rental.rental_end.strftime('%a %d %b %Y')}" %></p>
+  <p class="text-success"> <%= "With #{@last_rental.pokemon.name}" %></p>
 </div>
 
 <br>
