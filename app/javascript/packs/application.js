@@ -15,21 +15,10 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-// import { initFlatpickr } from "../plugins/flatpickr";
+import { initFlatpickr } from "../plugins/flatpicker";
+import { unavailable_dates_handler } from "../plugins/unavailable_dates_handler";
 
-// initFlatpickr();
-
-import flatpickr from "flatpickr"
-import 'flatpickr'
-import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
-
-
-flatpickr(".datepicker", {
-  altInput: true
-});
-
-
-flatpickr("#range_start", {
-  altInput: true,
-  plugins: [new rangePlugin({ input: "#range_end"})]
+document.addEventListener("turbolinks:load", () => {
+  initFlatpickr();
+  unavailable_dates_handler();
 });
