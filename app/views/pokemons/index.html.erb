@@ -25,7 +25,8 @@
 </div>
 
 <div class="row mt-4 w-100 mx-0">
-  <% @pokemons.each do |pokemon| %>
+  <% @pokemons_list = @pokemons.select { |pokemon| pokemon.user != current_user } %>
+  <% @pokemons_list.each do |pokemon| %>
     <div class="col-3 mb-3 px-3">
       <%= link_to pokemon_path(pokemon), id: "card-link" do %>
         <div class="column bg-white h-100" id="card">
