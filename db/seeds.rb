@@ -23,7 +23,7 @@ julien.save!
 nico.save!
 antho.save!
 
-psykokwak = Pokemon.new({name: "Psykokwak", special_capacity: "Hydrocanon", category: "Water", description: "In love with Jonathan "})
+psykokwak = Pokemon.new({name: "Psykokwak", special_capacity: "Hydrocanon", category: "Water", description: "In love with Jonathan ", address: "16 Villa Gaudelet, Paris"})
 psykokwak.user = raph
 psykokwak.save!
 file = URI.open("https://www.123-stickers.com/7329-7724-thickbox/Array.jpg")
