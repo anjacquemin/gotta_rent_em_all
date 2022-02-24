@@ -5,8 +5,16 @@
         <p class="text-center position-absolute  bg-danger p-1" style="transform:rotate(-25deg); top:15px; left:-20px; color:white"><%= @pokemon.name %></p>
         <div class="d-flex justify-content-center"  style="height:55vh">
           <div class="card-poke">
-            <div class="m-3 p-3 w-100">
-              <%= cl_image_tag @pokemon.photo.key, class: "poke_img" %>
+            <div class="m-3 p-3 h-50">
+              <%= cl_image_tag @pokemon.photo.key, class: "poke_img mt-3" %>
+              <div class="card-product-infos h-50 px-5 pb-0 pt-3 mt-5">
+            <%# <p>Rating : = @pokemon.rating</p> %>
+                <p>Evolution : <%= @pokemon.name%></p>
+                <p>Special capacity: <%= @pokemon.special_capacity %></p>
+                <p>Category : <%= @pokemon.category %></p>
+                <p>Description : <%= @pokemon.description %></p>
+                <p>User : <%= @pokemon.user.name %></p>
+              </div>
             </div>
           </div>
         </div>
@@ -14,17 +22,11 @@
 
       <div class="col-sm-6" style="height:55vh">
         <div class="card-poke d-flex flex-column"  style="height:55vh">
-          <div class="m-3 p-3 h-50">
-            <img class ="poke_img" src="https://www.pokepedia.fr/images/thumb/6/6e/Akwakwak-RFVF.png/610px-Akwakwak-RFVF.png">
-          </div>
-          <div class="card-product-infos h-50 px-5 pb-0 pt-3">
-            <%# <p>Rating : = @pokemon.rating</p> %>
-            <p>Evolution : <%= "Aquakwak"%></p>
-            <p>Special capacity: <%= @pokemon.special_capacity %></p>
-            <p>Category : <%= @pokemon.category %></p>
-            <p>Description : <%= @pokemon.description %></p>
-            <p>User : <%= @pokemon.user.name %></p>
-          </div>
+            <div style="width: 100%; height: 600px;"
+              data-controller="mapbox"
+              data-mapbox-markers-value="<%= @markers.to_json %>"
+              data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
         </div>
       </div>
     </div>
@@ -49,10 +51,5 @@
       </div>
       <% end %>
     </div>
-  </div>
-  <div style="width: 100%; height: 600px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
