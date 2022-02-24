@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  height: 80px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,19 +10,45 @@
 
 p{
   font-family: 'Pokemon GB';
+
+#navbar-title {
+  font-family: 'Press Start 2P', cursive;
   font-size: 20px;
   position: center;
   margin-bottom: 0rem;
-
 }
+
+p{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  position: center;
+  margin-bottom: 0rem;
+}
+
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
 
 .navbar-lewagon .Title{
-
   justify-items: center;
   align-items: center;
   font-size: 20px;
   text-align: inherit;
+}
+
+.drac_gif {
+  width: 16%;
+  animation-direction: alternate;
+}
+
+#navbar-center {
+
+  & img:first-child {
+    padding-right: 30px;
+  }
+
+  & img:last-child {
+    padding-right: 30px;
+    transform: rotateY(180deg);
+  }
 }
