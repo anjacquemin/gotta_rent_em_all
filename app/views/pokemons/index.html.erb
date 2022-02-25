@@ -11,6 +11,9 @@
         placeholder: "Find a pokemon"
         %>
         <%= submit_tag "Search", class:"btn-ghost" %>
+        <%= link_to pokemons_path do %>
+          <%= image_tag "Reset", :class => "reset"%>
+        <% end %>
         <% end %>
       </div>
     </div>
