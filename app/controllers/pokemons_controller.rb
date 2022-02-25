@@ -7,15 +7,22 @@ class PokemonsController < ApplicationController
       @pokemons = policy_scope(Pokemon)
     end
 
-    @markers = @pokemons.geocoded.map do |pokemon|
-      {
-        lat: pokemon.latitude,
-        lng: pokemon.longitude,
-        image_url: helpers.asset_url("pokeball_marker2.png"),
-        info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon })
-      }
-    end
+    @markers = []
 
+    @pokemons.geocoded.each do |pokemon|
+      puts "entree de le map"
+      puts "pokemon:#{pokemon}"
+      puts "current user:#{current_user}"
+      puts "user:#{pokemon.user}"
+      if pokemon.user != current_user
+        @markers << {
+          lat: pokemon.latitude,
+          lng: pokemon.longitude,
+          image_url: helpers.asset_url("pokeball_marker2.png"),
+          info_window: render_to_string(partial: "info_window", locals: { pokemon: pokemon })
+        }
+      end
+    end
   end
 
   def show
