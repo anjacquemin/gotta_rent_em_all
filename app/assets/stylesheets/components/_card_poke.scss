@@ -9,7 +9,12 @@
 .pika2 {
   position: absolute;
   bottom: auto;
-  left: 100px;
   width: 10%;
   margin-top: -50px;
+  animation: pika-pika 4s normal infinite ease-in-out;
+}
+
+@keyframes pika-pika {
+  from{left:0px}
+  to{left:100%}
 }
