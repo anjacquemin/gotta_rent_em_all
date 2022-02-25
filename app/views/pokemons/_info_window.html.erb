@@ -1,2 +1,7 @@
-<p> <%=  pokemon.name  %> </p>
-<%= cl_image_tag pokemon.photo.key, height: 200, class: "img-card-top" %>
+<%= link_to pokemon_path(pokemon) do %>
+<div class="window">
+<h1> <%= pokemon.name %> </h1>
+<p><%= pokemon.address %></p>
+<%= cl_image_tag pokemon.photo.key, height: 200, class: "img-card-top"%>
+<% end %>
+</div>
