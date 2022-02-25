@@ -39,7 +39,7 @@
                     <% end%>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item" style="center" id="pokename"> <%= pokemon.name %></li>
-                      <li class="list-group-item">Rating:</li>
+                      <li class="list-group-item">Rating: <%= pokemon.rating %></li>
                       <li class="list-group-item">Last bookings:</li>
                       <% pokemon.rentals.last(3).each do |rental| %>
                       <li class="list-group-item"><%= "#{rental.rental_beginning.strftime('%a %d %b %Y')} to #{rental.rental_end.strftime('%a %d %b %Y')} by #{rental.user.name}" %></li>
