@@ -22,5 +22,15 @@
 }
 
 .reset{
-  width: 12%;
+  margin-left: 10px;
+  width: 5%;
+
+  &:hover {
+    animation:rotation .8s normal infinite linear;
+  }
+}
+
+@keyframes rotation {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(359deg);}
 }
