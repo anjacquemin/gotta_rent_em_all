@@ -8,7 +8,33 @@
   font-family: 'Press Start 2P', cursive;
   background-color: rgba(110, 100, 100, 0.7);
   border-radius: 8px;
-  p {
+
+  h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 22px;
+  }
+}
+
+.window {
+  text-decoration: none;
+
+  // &:hover {
+  //   width: 150%;
+  //   height: 150%;
+  // }
+}
+
+.window a {
+  text-decoration: none;
+  color: black;
+
+  &:hover img{
+    height: 150%;
+    transform: rotate(30deg);
 
   }
+}
+
+.pika-gif {
+
 }

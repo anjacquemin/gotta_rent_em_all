@@ -31,6 +31,7 @@
       </div>
     </div>
 
+  <% if !policy(@pokemon).edit? %>
     <div id = "booking-dates" class="row mx-0 my-5 p-5 card-poke" data-unavailable="<%= @unavailable_dates %>" >
       <%= simple_form_for([@pokemon, @rental]) do |f| %>
         <div class="d-flex justify-content-around align-items-center">
@@ -49,16 +50,21 @@
         </div>
       <% end %>
     </div>
+  <% end %>
   </div>
-
+  </div>
+<br>
+<br>
+<br>
+<br>
   <div class="container d-flex">
     <div class="d-flex">
       <% if policy(@pokemon).edit? %>
       <div>
-        <%= link_to "Edit my pokemon", edit_pokemon_path(@pokemon), class: "button-pokemon" %>
+        <%= link_to "Edit my pokemon", edit_pokemon_path(@pokemon), class: "btn-ghost" %>
       </div>
       <div>
-        <%= link_to "Delete my pokemon", pokemon_path(@pokemon), class: "button-pokemon", method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
+        <%= link_to "Delete my pokemon", pokemon_path(@pokemon), class: "btn-ghost", method: :delete, data: { confirm: "Are you sure?", disable_with: "Processing..." } %>
       </div>
       <% end %>
     </div>
