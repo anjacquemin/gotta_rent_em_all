@@ -1,21 +1,19 @@
 <%= image_tag "pokemon_banner.png", style: 'background-size: cover; width: 100%; height: 100%' %>
 
 
-  <div class="row mt-3 mx-2">
-    <div class="col-sm-6 ">
-      <div class="search_poke">
-        <%= form_tag pokemons_path, style:"display: block ruby", method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a pokemon"
-        %>
-        <%= submit_tag "Search", class:"btn-ghost" %>
+  <div class="row mt-3 mx-2 justify-content-center postion-relative">
+    <div class="search_poke ">
+      <%= form_tag pokemons_path, style:"display: block ruby", method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a pokemon"
+      %>
+      <%= submit_tag "Search", class:"btn-ghost" %>
         <%= link_to pokemons_path do %>
           <%= image_tag "Reset", :class => "reset"%>
         <% end %>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 
@@ -43,14 +41,27 @@
     </div>
   <% end %>
 </div>
-<div class="container">
-  <div style="width: 100%; height: 600px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<%# <div class="d-flex justify-content"> %>
+  <%# <div class="container"> %>
+    <%# <img class="pika_gif" src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif"> %>
+  <%# </div> %>
+  <div class="container">
+    <div style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <%# <img class="pika_gif" src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif"> %>
   </div>
   <%# <div class="d-flex space-between">
     <img class="pika_gif" src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif">
     <img class="pika_gif" src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif">
   </div> %>
 </div>
+<div class="container">
+  <div class="row mt-3 mx-2 justify-content-center postion-relative">
+    <img class="pika2", src="https://i.pinimg.com/originals/ab/be/28/abbe28a943ed44fcd98452687f7c46c9.gif">
+  </div>
+</div>
+    <%# <img class="pika_gif" src="https://c.tenor.com/74l5y1hUdtwAAAAi/pokemon.gif"> %>
+<%# </div> %>
