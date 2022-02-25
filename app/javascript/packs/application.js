@@ -18,7 +18,23 @@ import "bootstrap"
 import { initFlatpickr } from "../plugins/flatpicker";
 import { unavailable_dates_handler } from "../plugins/unavailable_dates_handler";
 
+import { initSweetalert } from '../plugins/init_sweetalert';
+
+
 document.addEventListener("turbolinks:load", () => {
   initFlatpickr();
   unavailable_dates_handler();
+  initSweetalert('#sweet-alert-demo', {
+    title: "Confirmation",
+    text: "Are your sure you want to rent this pokemon ?",
+    icon: "info"
+  }, (value) => {
+    if (value) {
+      const link = document.querySelector('#submit_form input');
+      console.log(link)
+      console.log(value)
+      console.log("dans le sweetalert")
+      link.click();
+    }
+  });
 });
